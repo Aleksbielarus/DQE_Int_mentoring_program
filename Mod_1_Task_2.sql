@@ -54,8 +54,8 @@ BEGIN
 							   ,''' + tbl_list.[Data_type] + ''' AS [Data_Type] 
 							   , COUNT(DISTINCT ' + tbl_list.[Column_Name] + ') AS [Count of DISTINCT values]
 							   , SUM(CASE WHEN ' + tbl_list.[Column_Name] + ' IS NULL THEN 1 ELSE 0 END ) AS [Count of empty/zero values]
-							   , SUM(CASE WHEN UPPER(' + tbl_list.[Column_Name] + ') = ' + tbl_list.[Column_Name] + ' THEN 1 ELSE 0 END)  AS [Only UPPERCASE strings]
-							   , SUM(CASE WHEN LOWER(' + tbl_list.[Column_Name] + ') = ' + tbl_list.[Column_Name] + ' THEN 1 ELSE 0 END)  AS [Only LOWERCASE strings]
+							   , SUM(CASE WHEN CAST(UPPER(' + tbl_list.[Column_Name] + ') AS binary)  = CAST(' + tbl_list.[Column_Name] + ' AS binary) THEN 1 ELSE 0 END)  AS [Only UPPERCASE strings]	
+							   , SUM(CASE WHEN CAST(LOWER(' + tbl_list.[Column_Name] + ') AS binary)  = CAST(' + tbl_list.[Column_Name] + ' AS binary) THEN 1 ELSE 0 END)  AS [Only LOWERCASE strings]	
 							   , null as [Rows with non-printable characters at the beginning/end]
 							   , null as [Most used value]
 							   , null as [% rows with most used value]
@@ -72,8 +72,8 @@ BEGIN
 							   ,''' + tbl_list.[Data_type] + ''' AS [Data_Type] 
 							   , COUNT(DISTINCT ' + tbl_list.[Column_Name] + ') AS [Count of DISTINCT values]
 							   , SUM(CASE WHEN ' + tbl_list.[Column_Name] + ' IS NULL THEN 1 ELSE 0 END ) AS [Count of empty/zero values]								-- add zero values
-							   , SUM(CASE WHEN UPPER(' + tbl_list.[Column_Name] + ') = ' + tbl_list.[Column_Name] + ' THEN 1 ELSE 0 END)  AS [Only UPPERCASE strings]	-- need to check
-							   , SUM(CASE WHEN LOWER(' + tbl_list.[Column_Name] + ') = ' + tbl_list.[Column_Name] + ' THEN 1 ELSE 0 END)  AS [Only LOWERCASE strings]	-- need to check
+							   , SUM(CASE WHEN CAST(UPPER(' + tbl_list.[Column_Name] + ') AS binary)  = CAST(' + tbl_list.[Column_Name] + ' AS binary) THEN 1 ELSE 0 END)  AS [Only UPPERCASE strings]	
+							   , SUM(CASE WHEN CAST(LOWER(' + tbl_list.[Column_Name] + ') AS binary)  = CAST(' + tbl_list.[Column_Name] + ' AS binary) THEN 1 ELSE 0 END)  AS [Only LOWERCASE strings]	
 							   , null as [Rows with non-printable characters at the beginning/end]
 							   , null as [Most used value]
 							   , null as [% rows with most used value]
@@ -97,5 +97,3 @@ EXEC [hr].[SP_table_info]
     @p_DatabaseName = 'TRN'
 	,@p_SchemaName = 'hr'
 	,@p_TableName = '%';
-
-
