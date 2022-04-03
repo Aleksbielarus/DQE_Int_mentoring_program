@@ -7,7 +7,9 @@ ALTER PROCEDURE [hr].[SP_table_info]
 AS
 BEGIN
 	DECLARE   @v_TableList TABLE ([Table_Name] VARCHAR(100), [Column_name] VARCHAR(100), [Data_type] VARCHAR(100) );
-	DECLARE @v_Query NVARCHAR(MAX), @v_Query_db NVARCHAR(MAX);
+	DECLARE @v_Query NVARCHAR(MAX), @v_Query_db NVARCHAR(MAX), @date_type NVARCHAR(MAX);
+
+	SET  @date_type ='date';
 
 	-- use required db
 	SELECT @v_Query_db = 'USE ' + @p_DatabaseName;
@@ -24,6 +26,7 @@ BEGIN
 		INNER JOIN sys.types t ON t.user_type_id = col.user_type_id
 	WHERE 1 = 1
 	  AND schemas.name =  @p_SchemaName 
+	--  AND schemas.name =  'hr'
 	 -- and [all_objects].schema_id = 5 -- test
 	  AND [all_objects].[type_desc] = 'USER_TABLE';
 
@@ -59,6 +62,7 @@ BEGIN
 							   , null as [Rows with non-printable characters at the beginning/end]
 							   , null as [Most used value]
 							   , null as [% rows with most used value]
+--							   , MIN(CASE WHEN CAST('''+ tbl_list.[Data_type] + ''' AS binary) = CAST(''date'' AS binary) THEN CAST(CONVERT(VARCHAR(8), ' + tbl_list.[Column_Name] + ' , 112) AS INT) ELSE ' + tbl_list.[Column_Name] + '  END) as [MIN value]
 							   , null as [MIN value]
 							   , null as [MAX value]
 							  FROM [' + @p_SchemaName + '].[' + tbl_list.[Table_Name] + '] 
@@ -77,6 +81,7 @@ BEGIN
 							   , null as [Rows with non-printable characters at the beginning/end]
 							   , null as [Most used value]
 							   , null as [% rows with most used value]
+--							   , MIN(CASE WHEN CAST('''+ tbl_list.[Data_type] + ''' AS binary) = CAST(''date'' AS binary) THEN CAST(CONVERT(VARCHAR(8), ' + tbl_list.[Column_Name] + ' , 112) AS INT) ELSE ' + tbl_list.[Column_Name] + '  END) as [MIN value]
 							   , null as [MIN value]
 							   , null as [MAX value]
 							  FROM [' + @p_SchemaName + '].[' + tbl_list.[Table_Name] + ']'
@@ -92,6 +97,11 @@ BEGIN
 
 END;
 
+
+EXEC [hr].[SP_table_info] 
+    @p_DatabaseName = 'TRN'
+	,@p_SchemaName = 'hr'
+	,@p_TableName = 'jobs';
 
 EXEC [hr].[SP_table_info] 
     @p_DatabaseName = 'TRN'
