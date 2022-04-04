@@ -7,9 +7,7 @@ ALTER PROCEDURE [hr].[SP_table_info]
 AS
 BEGIN
 	DECLARE   @v_TableList TABLE ([Table_Name] VARCHAR(100), [Column_name] VARCHAR(100), [Data_type] VARCHAR(100) );
-	DECLARE @v_Query NVARCHAR(MAX), @v_Query_db NVARCHAR(MAX), @date_type NVARCHAR(MAX);
-
-	SET  @date_type ='date';
+	DECLARE @v_Query NVARCHAR(MAX), @v_Query_db NVARCHAR(MAX);
 
 	-- use required db
 	SELECT @v_Query_db = 'USE ' + @p_DatabaseName;
@@ -59,12 +57,11 @@ BEGIN
 							   , SUM(CASE WHEN ' + tbl_list.[Column_Name] + ' IS NULL THEN 1 ELSE 0 END ) AS [Count of empty/zero values]
 							   , SUM(CASE WHEN CAST(UPPER(' + tbl_list.[Column_Name] + ') AS binary)  = CAST(' + tbl_list.[Column_Name] + ' AS binary) THEN 1 ELSE 0 END)  AS [Only UPPERCASE strings]	
 							   , SUM(CASE WHEN CAST(LOWER(' + tbl_list.[Column_Name] + ') AS binary)  = CAST(' + tbl_list.[Column_Name] + ' AS binary) THEN 1 ELSE 0 END)  AS [Only LOWERCASE strings]	
-							   , null as [Rows with non-printable characters at the beginning/end]
+							   , SUM(CASE WHEN ASCII(RIGHT(' + tbl_list.[Column_Name] + ', 1)) IN (0, 7, 9, 10, 13, 16) OR  ASCII(LEFT(' + tbl_list.[Column_Name] + ', 1)) IN (0, 7, 9, 10, 13, 16) THEN 1 ELSE 0 END)  AS [Rows with non-printable characters at the beginning/end]
 							   , null as [Most used value]
 							   , null as [% rows with most used value]
---							   , MIN(CASE WHEN CAST('''+ tbl_list.[Data_type] + ''' AS binary) = CAST(''date'' AS binary) THEN CAST(CONVERT(VARCHAR(8), ' + tbl_list.[Column_Name] + ' , 112) AS INT) ELSE ' + tbl_list.[Column_Name] + '  END) as [MIN value]
-							   , null as [MIN value]
-							   , null as [MAX value]
+							   , CAST(MIN(CASE WHEN CAST('''+ tbl_list.[Data_type] + ''' AS binary) = CAST(''date'' AS binary) THEN CONVERT(VARCHAR(8), ' + tbl_list.[Column_Name] + ' , 112) ELSE ' + tbl_list.[Column_Name] + '  END) AS VARCHAR) as [MIN value]
+							   , CAST(MAX(CASE WHEN CAST('''+ tbl_list.[Data_type] + ''' AS binary) = CAST(''date'' AS binary) THEN CONVERT(VARCHAR(8), ' + tbl_list.[Column_Name] + ' , 112) ELSE ' + tbl_list.[Column_Name] + '  END) AS VARCHAR) as [MAX value]
 							  FROM [' + @p_SchemaName + '].[' + tbl_list.[Table_Name] + '] 
 								UNION ALL '
 						ELSE 'SELECT
@@ -75,15 +72,14 @@ BEGIN
 							   ,''' + tbl_list.[Column_Name] + ''' AS [Column_Name] 
 							   ,''' + tbl_list.[Data_type] + ''' AS [Data_Type] 
 							   , COUNT(DISTINCT ' + tbl_list.[Column_Name] + ') AS [Count of DISTINCT values]
-							   , SUM(CASE WHEN ' + tbl_list.[Column_Name] + ' IS NULL THEN 1 ELSE 0 END ) AS [Count of empty/zero values]								-- add zero values
+							   , SUM(CASE WHEN ' + tbl_list.[Column_Name] + ' IS NULL THEN 1 ELSE 0 END ) AS [Count of empty/zero values]
 							   , SUM(CASE WHEN CAST(UPPER(' + tbl_list.[Column_Name] + ') AS binary)  = CAST(' + tbl_list.[Column_Name] + ' AS binary) THEN 1 ELSE 0 END)  AS [Only UPPERCASE strings]	
-							   , SUM(CASE WHEN CAST(LOWER(' + tbl_list.[Column_Name] + ') AS binary)  = CAST(' + tbl_list.[Column_Name] + ' AS binary) THEN 1 ELSE 0 END)  AS [Only LOWERCASE strings]	
-							   , null as [Rows with non-printable characters at the beginning/end]
+							   , SUM(CASE WHEN CAST(LOWER(' + tbl_list.[Column_Name] + ') AS binary)  = CAST(' + tbl_list.[Column_Name] + ' AS binary) THEN 1 ELSE 0 END)  AS [Only LOWERCASE strings]
+							   , SUM(CASE WHEN ASCII(RIGHT(' + tbl_list.[Column_Name] + ', 1)) IN (0, 7, 9, 10, 13, 16) OR  ASCII(LEFT(' + tbl_list.[Column_Name] + ', 1)) IN (0, 7, 9, 10, 13, 16) THEN 1 ELSE 0 END)  AS [Rows with non-printable characters at the beginning/end]
 							   , null as [Most used value]
 							   , null as [% rows with most used value]
---							   , MIN(CASE WHEN CAST('''+ tbl_list.[Data_type] + ''' AS binary) = CAST(''date'' AS binary) THEN CAST(CONVERT(VARCHAR(8), ' + tbl_list.[Column_Name] + ' , 112) AS INT) ELSE ' + tbl_list.[Column_Name] + '  END) as [MIN value]
-							   , null as [MIN value]
-							   , null as [MAX value]
+							   , CAST(MIN(CASE WHEN CAST('''+ tbl_list.[Data_type] + ''' AS binary) = CAST(''date'' AS binary) THEN CONVERT(VARCHAR(8), ' + tbl_list.[Column_Name] + ' , 112) ELSE ' + tbl_list.[Column_Name] + '  END) AS VARCHAR) as [MIN value]
+							   , CAST(MAX(CASE WHEN CAST('''+ tbl_list.[Data_type] + ''' AS binary) = CAST(''date'' AS binary) THEN CONVERT(VARCHAR(8), ' + tbl_list.[Column_Name] + ' , 112) ELSE ' + tbl_list.[Column_Name] + '  END) AS VARCHAR) as [MAX value]
 							  FROM [' + @p_SchemaName + '].[' + tbl_list.[Table_Name] + ']'
 				END [query_text]
 			FROM tbl_list 
@@ -97,7 +93,6 @@ BEGIN
 
 END;
 
-
 EXEC [hr].[SP_table_info] 
     @p_DatabaseName = 'TRN'
 	,@p_SchemaName = 'hr'
@@ -107,3 +102,9 @@ EXEC [hr].[SP_table_info]
     @p_DatabaseName = 'TRN'
 	,@p_SchemaName = 'hr'
 	,@p_TableName = '%';
+
+-- for test Rows with non-printable characters at the beginning/end
+insert  into  hr.jobs
+values ( '	Test tab start', 0, 0), ( 'test tab end	', 0, 0);
+
+delete from hr.jobs where job_title like '%est tab %';
