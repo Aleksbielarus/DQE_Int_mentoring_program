@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0 (Python 3.8.5 on win32)" generated="20220510 14:24:09.425" rpa="false" schemaversion="3">
+<suite id="s1" name="Test Case" source="D:\RobotFramework_Task\Automation\test_case.robot">
+<kw name="Connect To Database" library="DatabaseLibrary" type="SETUP">
+<arg>pymssql</arg>
+<arg>${DBName}</arg>
+<arg>${DBUser}</arg>
+<arg>${DBPass}</arg>
+<arg>${DBHost}</arg>
+<arg>${DBPort}</arg>
+<doc>Loads the DB API 2.0 module given `dbapiModuleName` then uses it to
+connect to the database using `dbName`, `dbUsername`, and `dbPassword`.</doc>
+<msg timestamp="20220510 14:24:09.483" level="INFO">Connecting using : pymssql.connect(database=TRN, user=test_user, password=test_password123, host=localhost, port=1444) </msg>
+<status status="PASS" starttime="20220510 14:24:09.472" endtime="20220510 14:24:09.512"/>
+</kw>
+<test id="s1-t1" name="No duplicate check [hr].[employees]" line="11">
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<arg>${HR_EMPL_DUPLICATE_QUERY}</arg>
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<msg timestamp="20220510 14:24:09.515" level="INFO">Executing : Check If Not Exists In Database  |  SELECT employee_id, count(*) FROM [hr].[employees] GROUP BY employee_id HAVING count(*) &gt; 1; </msg>
+<msg timestamp="20220510 14:24:09.515" level="INFO">Executing : Query  |  SELECT employee_id, count(*) FROM [hr].[employees] GROUP BY employee_id HAVING count(*) &gt; 1; </msg>
+<status status="PASS" starttime="20220510 14:24:09.515" endtime="20220510 14:24:09.516"/>
+</kw>
+<doc>| *Description:*
+| Verify that all keys in the table [hr].[employees] are unique
+| *Test Steps:*
+| 1. Query sql script
+| 2. Verifiy that count of result rows is 0
+| *Expected result:*
+| 1. table [hr].[employees] is exists.
+| 2. PK is uniques and execution result show 0 rows.</doc>
+<tag>Duplicates checks</tag>
+<status status="PASS" starttime="20220510 14:24:09.513" endtime="20220510 14:24:09.517"/>
+</test>
+<test id="s1-t2" name="No duplicate check [hr].[countries]" line="25">
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<arg>${HR_CNTR_DUPLICATE_QUERY}</arg>
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<msg timestamp="20220510 14:24:09.519" level="INFO">Executing : Check If Not Exists In Database  |  SELECT country_id, count(*) FROM [hr].[countries] GROUP BY country_id HAVING count(*) &gt; 1; </msg>
+<msg timestamp="20220510 14:24:09.519" level="INFO">Executing : Query  |  SELECT country_id, count(*) FROM [hr].[countries] GROUP BY country_id HAVING count(*) &gt; 1; </msg>
+<status status="PASS" starttime="20220510 14:24:09.519" endtime="20220510 14:24:09.520"/>
+</kw>
+<doc>| *Description:*
+| Verify that all keys in the table [hr].[countries] are unique
+| *Test Steps:*
+| 1. Query sql script
+| 2. Verifiy that count of result rows is 0
+| *Expected result:*
+| 1. table [hr].[countries] is exists.
+| 2. PK is uniques and execution result show 0 rows.</doc>
+<tag>Duplicates checks</tag>
+<status status="PASS" starttime="20220510 14:24:09.518" endtime="20220510 14:24:09.521"/>
+</test>
+<test id="s1-t3" name="No duplicate check [hr].[job]" line="40">
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<arg>${HR_JOB_DUPLICATE_QUERY}</arg>
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<msg timestamp="20220510 14:24:09.523" level="INFO">Executing : Check If Not Exists In Database  |  SELECT job_id, count(*) FROM [hr].[jobs] GROUP BY job_id HAVING count(*) &gt; 1; </msg>
+<msg timestamp="20220510 14:24:09.523" level="INFO">Executing : Query  |  SELECT job_id, count(*) FROM [hr].[jobs] GROUP BY job_id HAVING count(*) &gt; 1; </msg>
+<status status="PASS" starttime="20220510 14:24:09.523" endtime="20220510 14:24:09.524"/>
+</kw>
+<doc>| *Description:*
+| Verify that all keys in the table [hr].[job] are unique
+| *Test Steps:*
+| 1. Query sql script
+| 2. Verifiy that count of result rows is 0
+| *Expected result:*
+| 1. table [hr].[job] is exists.
+| 2. PK is uniques and execution result show 0 rows.</doc>
+<tag>Duplicates checks</tag>
+<status status="PASS" starttime="20220510 14:24:09.522" endtime="20220510 14:24:09.524"/>
+</test>
+<test id="s1-t4" name="No duplicate check [hr].[locations]" line="55">
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<arg>${HR_LOCAT_DUPLICATE_QUERY}</arg>
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<msg timestamp="20220510 14:24:09.526" level="INFO">Executing : Check If Not Exists In Database  |  SELECT location_id, count(*) FROM [hr].[locations] GROUP BY location_id HAVING count(*) &gt; 1; </msg>
+<msg timestamp="20220510 14:24:09.526" level="INFO">Executing : Query  |  SELECT location_id, count(*) FROM [hr].[locations] GROUP BY location_id HAVING count(*) &gt; 1; </msg>
+<status status="PASS" starttime="20220510 14:24:09.526" endtime="20220510 14:24:09.527"/>
+</kw>
+<doc>| *Description:*
+| Verify that all keys in the table [hr].[locations] are unique
+| *Test Steps:*
+| 1. Query sql script
+| 2. Verifiy that count of result rows is 0
+| *Expected result:*
+| 1. table [hr].[locations] is exists.
+| 2. PK is uniques and execution result show 0 rows.</doc>
+<tag>Duplicates checks</tag>
+<status status="PASS" starttime="20220510 14:24:09.525" endtime="20220510 14:24:09.527"/>
+</test>
+<test id="s1-t5" name="Hire date completeness in the [hr].[employee] table" line="70">
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<arg>${HR_EMPL_hire_date_completeness_check}</arg>
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<msg timestamp="20220510 14:24:09.529" level="INFO">Executing : Check If Not Exists In Database  |  SELECT * FROM [hr].[employees] WHERE hire_date IS NULL; </msg>
+<msg timestamp="20220510 14:24:09.529" level="INFO">Executing : Query  |  SELECT * FROM [hr].[employees] WHERE hire_date IS NULL; </msg>
+<status status="PASS" starttime="20220510 14:24:09.529" endtime="20220510 14:24:09.530"/>
+</kw>
+<doc>| *Description:*
+| Hire date column is comletely fill in [hr].[employees] table
+| *Test Steps:*
+| 1. Query sql script
+| 2. Verify that count of result rows is 0
+| *Expected result:*
+| 1. table [hr].[employees] is exists.
+| 2. Execution result show 0 rows.</doc>
+<tag>Completeness checks</tag>
+<status status="PASS" starttime="20220510 14:24:09.528" endtime="20220510 14:24:09.531"/>
+</test>
+<test id="s1-t6" name="Salary is not greater than max_salary and not less than min_salary in the [hr].[employees]" line="84">
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<arg>${HR_LOCAT_salry_validity_check}</arg>
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<msg timestamp="20220510 14:24:09.533" level="INFO">Executing : Check If Not Exists In Database  |  SELECT employee_id, employees.job_id, salary, min_salary, max_salary FROM [hr].[employees] LEFT JOIN [hr].[jobs] on jobs.job_id = employees.job_id WHERE salary &lt; min_salary or salary &gt; max_salary </msg>
+<msg timestamp="20220510 14:24:09.533" level="INFO">Executing : Query  |  SELECT employee_id, employees.job_id, salary, min_salary, max_salary FROM [hr].[employees] LEFT JOIN [hr].[jobs] on jobs.job_id = employees.job_id WHERE salary &lt; min_salary or salary &gt; max_salary </msg>
+<status status="PASS" starttime="20220510 14:24:09.533" endtime="20220510 14:24:09.533"/>
+</kw>
+<doc>| *Description:*
+| Validate that there is no salary per employee more than max
+| salary for job possition or less than min_salary for job possition.
+| *Test Steps:*
+| 1. Query sql script
+| 2. Verify that there is no salary per employee more than max
+| salary for job possition or less than min_salary for job possition
+| *Expected result:*
+| 1. table [hr].[employees] is exists.
+| 2. Execution result show 0 rows.</doc>
+<tag>Consistency checks</tag>
+<tag>Validity checks;</tag>
+<status status="PASS" starttime="20220510 14:24:09.532" endtime="20220510 14:24:09.534"/>
+</test>
+<test id="s1-t7" name="Employees email column validity" line="100">
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<arg>${HR_EMPL_email_validity}</arg>
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<msg timestamp="20220510 14:24:09.536" level="INFO">Executing : Check If Not Exists In Database  |  SELECT employee_id, email FROM hr.employees WHERE email NOT LIKE '%@%' </msg>
+<msg timestamp="20220510 14:24:09.536" level="INFO">Executing : Query  |  SELECT employee_id, email FROM hr.employees WHERE email NOT LIKE '%@%' </msg>
+<status status="PASS" starttime="20220510 14:24:09.536" endtime="20220510 14:24:09.537"/>
+</kw>
+<doc>| *Description:*
+| Validate that employees.email column contain @.
+| *Test Steps:*
+| 1. Query sql script
+| 2. Verify that there are no rows without @ in email column
+| *Expected result:*
+| 1. table [hr].[employee] is exists.
+| 2. Execution result show 0 rows.</doc>
+<tag>Validity checks</tag>
+<status status="PASS" starttime="20220510 14:24:09.535" endtime="20220510 14:24:09.537"/>
+</test>
+<test id="s1-t8" name="Employees manager_id column validity" line="114">
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<arg>${HR_EMPL_manager_validity}</arg>
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<msg timestamp="20220510 14:24:09.539" level="INFO">Executing : Check If Not Exists In Database  |  SELECT em.employee_id, em.manager_id FROM [hr].[employees] em WHERE manager_id NOT IN (SELECT employee_id FROM [hr].[employees]) </msg>
+<msg timestamp="20220510 14:24:09.539" level="INFO">Executing : Query  |  SELECT em.employee_id, em.manager_id FROM [hr].[employees] em WHERE manager_id NOT IN (SELECT employee_id FROM [hr].[employees]) </msg>
+<status status="PASS" starttime="20220510 14:24:09.538" endtime="20220510 14:24:09.539"/>
+</kw>
+<doc>| *Description:*
+| Validate that employees.manager_id exists in employees.employee_id
+| *Test Steps:*
+| 1. Query sql script
+| 2. Verify that manager_id exists in employee_id column
+| *Expected result:*
+| 1. table [hr].[employee] is exists.
+| 2. Execution result show 0 rows.</doc>
+<tag>Validity checks</tag>
+<status status="PASS" starttime="20220510 14:24:09.537" endtime="20220510 14:24:09.540"/>
+</test>
+<test id="s1-t9" name="Locations postal_code column consists of 5 symbols.( FAIL TEST)" line="128">
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<arg>${HR_COCAT_postal_code_validity}</arg>
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<msg timestamp="20220510 14:24:09.541" level="INFO">Executing : Check If Not Exists In Database  |  SELECT location_id, postal_code FROM [hr].[locations] WHERE LEN(postal_code) != 5 </msg>
+<msg timestamp="20220510 14:24:09.541" level="INFO">Executing : Query  |  SELECT location_id, postal_code FROM [hr].[locations] WHERE LEN(postal_code) != 5 </msg>
+<msg timestamp="20220510 14:24:09.542" level="FAIL">Expected to have have no rows from 'SELECT location_id, postal_code FROM [hr].[locations] WHERE LEN(postal_code) != 5' but got some rows : [(1800, 'M5V 2L7'), (2500, 'OX9 9ZB')].</msg>
+<status status="FAIL" starttime="20220510 14:24:09.541" endtime="20220510 14:24:09.543"/>
+</kw>
+<doc>| *Description:*
+| Validate that locaxtions.postal_code consists of 5 symbols.
+| *Test Steps:*
+| 1. Query sql script
+| 2. Verify that postal_code column contain only 5 symbols
+| *Expected result:*
+| 1. table [hr].[locations] is exists.
+| 2. Execution result show 0 rows.</doc>
+<tag>Validity checks</tag>
+<status status="FAIL" starttime="20220510 14:24:09.540" endtime="20220510 14:24:09.544">Expected to have have no rows from 'SELECT location_id, postal_code FROM [hr].[locations] WHERE LEN(postal_code) != 5' but got some rows : [(1800, 'M5V 2L7'), (2500, 'OX9 9ZB')].</status>
+</test>
+<kw name="Disconnect From Database" library="DatabaseLibrary" type="TEARDOWN">
+<doc>Disconnects from the database.</doc>
+<msg timestamp="20220510 14:24:09.546" level="INFO">Executing : Disconnect From Database</msg>
+<status status="PASS" starttime="20220510 14:24:09.545" endtime="20220510 14:24:09.546"/>
+</kw>
+<status status="FAIL" starttime="20220510 14:24:09.427" endtime="20220510 14:24:09.546"/>
+</suite>
+<statistics>
+<total>
+<stat pass="8" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">Completeness checks</stat>
+<stat pass="1" fail="0" skip="0">Consistency checks</stat>
+<stat pass="4" fail="0" skip="0">Duplicates checks</stat>
+<stat pass="2" fail="1" skip="0">Validity checks</stat>
+<stat pass="1" fail="0" skip="0">Validity checks;</stat>
+</tag>
+<suite>
+<stat pass="8" fail="1" skip="0" id="s1" name="Test Case">Test Case</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
