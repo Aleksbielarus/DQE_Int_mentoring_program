@@ -23,7 +23,7 @@ def hr_empl_email_validity_query():
 
 def hr_empl_manager_id_consistancy_query():
     query_text = (f"SELECT em.employee_id, em.manager_id "
-                  f"FROM [hr].[employees] em"
+                  f"FROM [hr].[employees] em "
                   f"WHERE manager_id NOT IN (SELECT employee_id FROM [hr].[employees])")
     return query_text
 
