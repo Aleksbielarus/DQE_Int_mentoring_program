@@ -1,0 +1,25 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Product defects",
+    "children" : [ {
+      "name" : "AssertionError: Count of row is not valid. Actual row count is 2\nassert 2 == 0",
+      "children" : [ {
+        "name" : "test_hr_location_postal_code_validity",
+        "uid" : "c267feb351db5abe",
+        "parentUid" : "ac046345d55320748117e6347d133227",
+        "status" : "failed",
+        "time" : {
+          "start" : 1652352933555,
+          "stop" : 1652352933568,
+          "duration" : 13
+        },
+        "flaky" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "ac046345d55320748117e6347d133227"
+    } ],
+    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  } ]
+}
