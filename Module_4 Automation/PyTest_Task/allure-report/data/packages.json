@@ -5,73 +5,73 @@
     "name" : "tests.test_case",
     "children" : [ {
       "name" : "test_hr_empl_duplicates_by_key_checks",
-      "uid" : "c77dd0b4f25d1f7",
+      "uid" : "477e5de4ba6e534f",
       "parentUid" : "3c7c3677fda4916c93fc9e10878d8719",
       "status" : "passed",
       "time" : {
-        "start" : 1652352933467,
-        "stop" : 1652352933499,
-        "duration" : 32
+        "start" : 1652359720396,
+        "stop" : 1652359720490,
+        "duration" : 94
       },
       "flaky" : false,
       "parameters" : [ ]
     }, {
       "name" : "test_hr_empl_salary_validation",
-      "uid" : "546e10c531346a2b",
+      "uid" : "3ddc4ea249a29b3b",
       "parentUid" : "3c7c3677fda4916c93fc9e10878d8719",
       "status" : "passed",
       "time" : {
-        "start" : 1652352933502,
-        "stop" : 1652352933514,
-        "duration" : 12
+        "start" : 1652359720494,
+        "stop" : 1652359720525,
+        "duration" : 31
       },
       "flaky" : false,
       "parameters" : [ ]
     }, {
       "name" : "test_hr_empl_email_validity",
-      "uid" : "f47f40934e682bf6",
+      "uid" : "576fe4acc8314228",
       "parentUid" : "3c7c3677fda4916c93fc9e10878d8719",
       "status" : "passed",
       "time" : {
-        "start" : 1652352933517,
-        "stop" : 1652352933528,
-        "duration" : 11
+        "start" : 1652359720528,
+        "stop" : 1652359720540,
+        "duration" : 12
       },
       "flaky" : false,
       "parameters" : [ ]
     }, {
       "name" : "test_hr_empl_manager_id_consistency",
-      "uid" : "e6a39bfa96d9108d",
+      "uid" : "f26539c91285adbf",
       "parentUid" : "3c7c3677fda4916c93fc9e10878d8719",
       "status" : "passed",
       "time" : {
-        "start" : 1652352933532,
-        "stop" : 1652352933544,
+        "start" : 1652359720544,
+        "stop" : 1652359720556,
         "duration" : 12
       },
       "flaky" : false,
       "parameters" : [ ]
     }, {
       "name" : "test_hr_location_postal_code_validity",
-      "uid" : "c267feb351db5abe",
+      "uid" : "b259d4f510d93355",
       "parentUid" : "3c7c3677fda4916c93fc9e10878d8719",
       "status" : "failed",
       "time" : {
-        "start" : 1652352933555,
-        "stop" : 1652352933568,
-        "duration" : 13
+        "start" : 1652359720559,
+        "stop" : 1652359720587,
+        "duration" : 28
       },
-      "flaky" : false,
+      "flaky" : true,
       "parameters" : [ ]
     }, {
       "name" : "test_hr_empl_hire_date_completeness",
-      "uid" : "af76e30c53e1c34",
+      "uid" : "d364d06d7c2788ff",
       "parentUid" : "3c7c3677fda4916c93fc9e10878d8719",
       "status" : "passed",
       "time" : {
-        "start" : 1652352933742,
-        "stop" : 1652352933753,
-        "duration" : 11
+        "start" : 1652359720770,
+        "stop" : 1652359720782,
+        "duration" : 12
       },
       "flaky" : false,
       "parameters" : [ ]

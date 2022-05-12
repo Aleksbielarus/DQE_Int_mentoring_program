@@ -1,0 +1,62 @@
+{
+  "uid" : "477e5de4ba6e534f",
+  "name" : "test_hr_empl_duplicates_by_key_checks",
+  "fullName" : "tests.test_case#test_hr_empl_duplicates_by_key_checks",
+  "historyId" : "ecaa7c2fcfe853eb495e01dcdd2919eb",
+  "time" : {
+    "start" : 1652359720396,
+    "stop" : 1652359720490,
+    "duration" : 94
+  },
+  "description" : "\n    Check uniqueness by PK in the table hr.employees\n    ",
+  "descriptionHtml" : "<pre><code>Check uniqueness by PK in the table hr.employees\n</code></pre>\n",
+  "status" : "passed",
+  "flaky" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_case"
+  }, {
+    "name" : "host",
+    "value" : "EPBYMINW0E13"
+  }, {
+    "name" : "thread",
+    "value" : "19504-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_case"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "52c06da38818c0c",
+      "status" : "passed",
+      "time" : {
+        "start" : 1652359470278,
+        "stop" : 1652359470380,
+        "duration" : 102
+      }
+    } ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "477e5de4ba6e534f.json",
+  "parameterValues" : [ ]
+}

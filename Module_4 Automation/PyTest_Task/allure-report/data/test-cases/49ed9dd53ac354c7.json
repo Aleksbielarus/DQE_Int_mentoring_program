@@ -1,0 +1,52 @@
+{
+  "uid" : "49ed9dd53ac354c7",
+  "name" : "test_hr_location_postal_code_validity",
+  "fullName" : "tests.test_case#test_hr_location_postal_code_validity",
+  "historyId" : "6dd1ff11326b09908c18093dc8fba7a5",
+  "time" : {
+    "start" : 1652359470433,
+    "stop" : 1652359470446,
+    "duration" : 13
+  },
+  "status" : "failed",
+  "statusMessage" : "AssertionError: Count of row is not valid. Actual row count is 2\nassert 2 == 0",
+  "statusTrace" : "def test_hr_location_postal_code_validity():\n        cursor, conn = connection.mssql_connect(Credentials.server,\n                                                Credentials.user,\n                                                Credentials.password,\n                                                Credentials.database,\n                                                Credentials.port)\n        cursor.execute(SQL_scripts.hr_location_postal_code_validity_query())\n        results = len(pd.DataFrame(cursor.fetchall()).index)\n>       assert results == 0, global_enums.WRONG_COUNT_OF_ROWS(results)\nE       AssertionError: Count of row is not valid. Actual row count is 2\nE       assert 2 == 0\n\ntests\\test_case.py:64: AssertionError",
+  "flaky" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_case"
+  }, {
+    "name" : "host",
+    "value" : "EPBYMINW0E13"
+  }, {
+    "name" : "thread",
+    "value" : "5864-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_case"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "49ed9dd53ac354c7.json",
+  "parameterValues" : [ ]
+}

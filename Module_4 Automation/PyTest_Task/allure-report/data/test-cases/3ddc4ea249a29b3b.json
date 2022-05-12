@@ -1,0 +1,62 @@
+{
+  "uid" : "3ddc4ea249a29b3b",
+  "name" : "test_hr_empl_salary_validation",
+  "fullName" : "tests.test_case#test_hr_empl_salary_validation",
+  "historyId" : "307eda86dbf1c0fc66b67a180d6e2019",
+  "time" : {
+    "start" : 1652359720494,
+    "stop" : 1652359720525,
+    "duration" : 31
+  },
+  "description" : "\n    Validate that there is no salary per employee more than max\n    salary for job possition or less than min_salary for job possition.\n    ",
+  "descriptionHtml" : "<pre><code>Validate that there is no salary per employee more than max\nsalary for job possition or less than min_salary for job possition.\n</code></pre>\n",
+  "status" : "passed",
+  "flaky" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_case"
+  }, {
+    "name" : "host",
+    "value" : "EPBYMINW0E13"
+  }, {
+    "name" : "thread",
+    "value" : "19504-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_case"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "7ed275556698c418",
+      "status" : "passed",
+      "time" : {
+        "start" : 1652359470383,
+        "stop" : 1652359470396,
+        "duration" : 13
+      }
+    } ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "3ddc4ea249a29b3b.json",
+  "parameterValues" : [ ]
+}

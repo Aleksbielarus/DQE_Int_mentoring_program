@@ -1,7 +1,20 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Thu May 12 13:55:33 MSK 2022","Thu May 12 13:55:33 MSK 2022","12","tests","test_case","","","","test_hr_empl_manager_id_consistency",""
-"passed","Thu May 12 13:55:33 MSK 2022","Thu May 12 13:55:33 MSK 2022","12","tests","test_case","","","","test_hr_empl_salary_validation",""
-"failed","Thu May 12 13:55:33 MSK 2022","Thu May 12 13:55:33 MSK 2022","13","tests","test_case","","","","test_hr_location_postal_code_validity",""
-"passed","Thu May 12 13:55:33 MSK 2022","Thu May 12 13:55:33 MSK 2022","32","tests","test_case","","","","test_hr_empl_duplicates_by_key_checks",""
-"passed","Thu May 12 13:55:33 MSK 2022","Thu May 12 13:55:33 MSK 2022","11","tests","test_case","","","","test_hr_empl_email_validity",""
-"passed","Thu May 12 13:55:33 MSK 2022","Thu May 12 13:55:33 MSK 2022","11","tests","test_case","","","","test_hr_empl_hire_date_completeness",""
+"passed","Thu May 12 15:48:40 MSK 2022","Thu May 12 15:48:40 MSK 2022","31","tests","test_case","","","","test_hr_empl_salary_validation","
+    Validate that there is no salary per employee more than max
+    salary for job possition or less than min_salary for job possition.
+    "
+"passed","Thu May 12 15:48:40 MSK 2022","Thu May 12 15:48:40 MSK 2022","12","tests","test_case","","","","test_hr_empl_manager_id_consistency","
+     Validate that employees.manager_id exists in employees.employee_id
+    "
+"passed","Thu May 12 15:48:40 MSK 2022","Thu May 12 15:48:40 MSK 2022","12","tests","test_case","","","","test_hr_empl_email_validity","
+     Validate that employees.email column contain @.
+    "
+"failed","Thu May 12 15:48:40 MSK 2022","Thu May 12 15:48:40 MSK 2022","28","tests","test_case","","","","test_hr_location_postal_code_validity","
+     Validate that locations.postal_code consists of 5 symbols.
+    "
+"passed","Thu May 12 15:48:40 MSK 2022","Thu May 12 15:48:40 MSK 2022","94","tests","test_case","","","","test_hr_empl_duplicates_by_key_checks","
+    Check uniqueness by PK in the table hr.employees
+    "
+"passed","Thu May 12 15:48:40 MSK 2022","Thu May 12 15:48:40 MSK 2022","12","tests","test_case","","","","test_hr_empl_hire_date_completeness","
+     Hire date column is comletely fill in  [hr].[employees] table
+    "

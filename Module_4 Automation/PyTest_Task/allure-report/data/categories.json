@@ -7,15 +7,15 @@
       "name" : "AssertionError: Count of row is not valid. Actual row count is 2\nassert 2 == 0",
       "children" : [ {
         "name" : "test_hr_location_postal_code_validity",
-        "uid" : "c267feb351db5abe",
+        "uid" : "b259d4f510d93355",
         "parentUid" : "ac046345d55320748117e6347d133227",
         "status" : "failed",
         "time" : {
-          "start" : 1652352933555,
-          "stop" : 1652352933568,
-          "duration" : 13
+          "start" : 1652359720559,
+          "stop" : 1652359720587,
+          "duration" : 28
         },
-        "flaky" : false,
+        "flaky" : true,
         "parameters" : [ ]
       } ],
       "uid" : "ac046345d55320748117e6347d133227"
